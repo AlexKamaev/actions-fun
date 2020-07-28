@@ -1,16 +1,15 @@
 const createTestCafe = require('testcafe');
 
-const testcafe = await createTestCafe('localhost', 1337, 1338);
+let testCafe = null;
 
-try {
-    const runner = testcafe.createRunner();
+createTestCafe('localhost', 1337, 1338)
+    .then(tc => {
+        testCafe = tc;
 
-    const failedCount = await runner
-        .browsers('chrome')
-        .run();
-
-    console.log('Tests failed: ' + failedCount);
-}
-finally {
-    await testcafe.close();
-}
+        return testCafe.createRunner()
+            .browsers(['chrome'])
+            .run();
+    })
+    .then(() => {
+        return testCafe.close();
+    });
