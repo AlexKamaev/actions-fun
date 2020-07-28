@@ -15,7 +15,9 @@ jobs:
           node-version: ${{ matrix.node }}
       - uses: actions/checkout@v1
       - run: npm ci
-      - name: Run TestCafe Tests
+      - name: Install TestCafe
         uses: DevExpress/testcafe-action@latest
         with:
           args: '-v'
+      - name: Run custom runner
+        run: node runner.js
