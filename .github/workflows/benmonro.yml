@@ -18,6 +18,6 @@ jobs:
       - name: Install TestCafe
         uses: DevExpress/testcafe-action@latest
         with:
-          args: 'chrome:headless'
+          args: '-v'
       - name: Run custom runner
         run: node runner.js
