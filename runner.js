@@ -11,7 +11,7 @@ createTestCafe('localhost', 1337, 1338)
         testCafe = tc;
 
         return testCafe.createRunner()
-            .browsers(['chrome'])
+            .browsers(['chrome:headless'])
             .run();
     })
     .then(() => {
