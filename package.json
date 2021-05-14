@@ -11,8 +11,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "match-url-wildcard": "0.0.4"
-  }
+  "license": "ISC"
 }

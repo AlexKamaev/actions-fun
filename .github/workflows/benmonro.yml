@@ -3,21 +3,14 @@ on: [push]
 
 jobs:
   build:
-    name: '${{ matrix.os }} node ${{ matrix.node }}'
-    runs-on: '${{ matrix.os }}'
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [12, 10]
+    name: 'test'
+    runs-on: 'windows-latest'
     steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
       - uses: actions/checkout@v1
       - run: npm ci
       - name: Install TestCafe
-        uses: DevExpress/testcafe-action@latest
+        uses: DevExpress/testcafe-action@v0.0.5
         with:
-          args: '-v'
-      - name: Run custom runner
-        run: node runner.js
+          version: "1.10"
+          skip-install: true
+          args: "chrome tests/testcafe/test.js"
